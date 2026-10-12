@@ -1,6 +1,7 @@
-/* Brewling design concept. Local navigation and form preview only. */
+/* Brewling portfolio navigation and enquiry form. */
 const products=window.BREWLING_PRODUCTS.map(p=>({...p,...window.BREWLING_ENHANCEMENTS[p.id]}));
 const main=document.querySelector('#main');
+let disposeEnquiryForm=null;
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const productURL=p=>`#/products/${p.id}`;
 const contactURL=p=>`#/contact${p?'?product='+p.id:''}`;
@@ -55,7 +56,7 @@ function solutionDetail(s){return `<section class="solution-hero wrap"><div clas
 
 function why(){return `<section class="inner-hero wrap"><span class="eyebrow">Why Brewling</span><h1>The Brewling<br>Standard.</h1><p>Our design principles for useful AI, clear responsibility and work you can trace. A shared approach across five focused products.</p></section><section class="editorial-split wrap"><h2>Focused products.<br>A shared point of view.</h2><div><p>Each Brewling product serves a different kind of work. What they share is a commitment to clarity, useful AI and responsible action. This standard guides how we build; each product has its own scope, deployment requirements and development stage.</p><p>You should be able to understand what a product does, where it fits and what your organisation needs to make it work. That principle shapes both the software and how we introduce it.</p></div></section><section class="dark-section"><div class="philosophy wrap"><div><span class="eyebrow">Our approach to AI</span><h2>Useful intelligence.<br>Visible responsibility.</h2><p class="intro">Start with a specific task. Keep the source in view. Make the next action clear.</p></div><div class="principles">${[['Give AI a useful job','Start with a real task, work with permitted information and help people review the result.'],['Keep responsibility visible','Consequential decisions belong to authorised people. Make ownership, review and approval clear.'],['Leave a record people can follow','Connect actions to the sources, decisions and evidence behind them, so the work can be explained later.'],['Design for the operating context','Build around local workflows, mobile use and practical constraints. Nigeria is our starting point.']].map((x,i)=>`<div class="principle"><span>0${i+1}</span><div><h3>${x[0]}</h3><p>${x[1]}</p></div></div>`).join('')}</div></div></section><section class="editorial-split wrap"><h2>Local context is<br>product context.</h2><div><p>Currency, communication habits, connectivity and operating requirements change how software needs to behave. Nigeria is our starting point. Each additional market deserves the same attention.</p><p>We treat these as product decisions to work through with organisations, rather than assuming one configuration fits everyone.</p></div></section><section class="editorial-split wrap"><h2>Start with one<br>important workflow.</h2><div><p>Choose a defined problem, understand the people involved and agree what a useful outcome looks like. Evaluate the product against that work, including the controls, integrations and support your organisation requires.</p>${textLink('Explore the products','#/products')}</div></section>${closing()}`;}
 function company(){return `<section class="inner-hero wrap"><span class="eyebrow">About Brewling</span><h1>Ambitious software.<br>Practical purpose.</h1><p>Brewling is building a family of AI-powered products for the work that keeps organisations moving.</p></section><section class="company-block wrap"><p class="manifesto">Good work depends on people having the information, tools and authority to take the next step.<br><em>We’re building around that belief.</em></p></section><section class="editorial-split wrap"><h2>Five products.<br>Clear responsibilities.</h2><div><p>Databrew focuses on enterprise AI. Dealbrew follows commercial transactions. Hirebrew supports people operations. Ledgerbrew brings control to finance operations. Propbrew serves estate and property teams.</p><p>Each has its own audience and a distinct job to do. Brewling provides the shared identity and product philosophy behind the family.</p>${textLink('Meet the products','#/products')}</div></section><section class="editorial-split wrap"><h2>Starting with<br>the work around us.</h2><div><p>Our starting context is Nigeria, with a broader African ambition. We want to understand the details of how organisations operate before making promises about what software should change.</p><p>We welcome conversations with teams who can help shape that work around real needs.</p></div></section>${closing('Help shape what better work looks like.')}`;}
-function contact(selected,solutionFocus){const selectedSolution=solutions.find(s=>s.id===solutionFocus);return `<section class="contact-layout wrap"><div><span class="eyebrow">Talk to Brewling</span><h1>Let’s start with<br>your work.</h1><p>Tell us where time is lost, decisions stall or information goes missing. We’ll explore which product fits and what your organisation needs.</p><div class="contact-aside"><h3 id="enquiry-intent-title">A useful first conversation.</h3><p id="enquiry-intent">Share the workflow you want to improve, who uses it and the systems your team works with today. You don’t need to have a product in mind.</p></div></div><form class="form" id="enquiry-form"${selectedSolution?` data-solution="${selectedSolution.id}"`:""}>${selectedSolution?`<div class="enquiry-solution"><span class="eyebrow">Your solution enquiry</span><strong>${selectedSolution.label}</strong><a href="${solutionURL(selectedSolution)}">Review this solution ↗</a></div>`:""}<p class="form-note">Design preview. This form does not send or store your information. Use sample details to preview the enquiry.</p><label for="enquiry-name">Your name</label><input id="enquiry-name" name="name" autocomplete="off" required maxlength="100"><label for="enquiry-email">Work email</label><input id="enquiry-email" name="email" type="email" autocomplete="off" required maxlength="150"><label for="enquiry-company">Organisation</label><input id="enquiry-company" name="company" autocomplete="off" required maxlength="150"><label for="enquiry-product">What would you like to explore?</label><select id="enquiry-product" name="product"><option value="Not sure yet">Help me find the right product</option>${products.map(p=>`<option value="${p.name}"${p.id===selected?' selected':''}>${p.name} / ${p.category}</option>`).join('')}</select><label for="enquiry-context">What would you like to improve?</label><p class="field-help" id="enquiry-context-help"></p><textarea id="enquiry-context" name="context" aria-describedby="enquiry-context-help" required maxlength="2000"></textarea><button type="submit" class="button">Preview enquiry <span aria-hidden="true">↗</span></button><p class="note">Nothing leaves this browser. Refreshing clears the form.</p><div id="enquiry-result" class="confirmation" role="status" hidden></div></form></section>`;}
+function contact(selected,solutionFocus){const selectedSolution=solutions.find(s=>s.id===solutionFocus);return `<section class="contact-layout wrap"><div><span class="eyebrow">Talk to Brewling</span><h1>Let’s start with<br>your work.</h1><p>Tell us where time is lost, decisions stall or information goes missing. We’ll explore which product fits and what your organisation needs.</p><div class="contact-aside"><h3 id="enquiry-intent-title">A useful first conversation.</h3><p id="enquiry-intent">Share the workflow you want to improve, who uses it and the systems your team works with today. You don’t need to have a product in mind.</p></div></div><form class="form" id="enquiry-form" method="post" action="/api/enquiries" aria-describedby="enquiry-privacy"${selectedSolution?` data-solution="${selectedSolution.id}"`:""}>${selectedSolution?`<div class="enquiry-solution"><span class="eyebrow">Your solution enquiry</span><strong>${selectedSolution.label}</strong><a href="${solutionURL(selectedSolution)}">Review this solution ↗</a></div>`:""}<label for="enquiry-name">Your name</label><input id="enquiry-name" name="name" autocomplete="name" required maxlength="100"><label for="enquiry-email">Work email</label><input id="enquiry-email" name="email" type="email" autocomplete="email" required maxlength="150"><label for="enquiry-company">Organisation</label><input id="enquiry-company" name="company" autocomplete="organization" required maxlength="150"><label for="enquiry-product">What would you like to explore?</label><select id="enquiry-product" name="product"><option value="Not sure yet">Help me find the right product</option>${products.map(p=>`<option value="${p.name}"${p.id===selected?' selected':''}>${p.name} / ${p.category}</option>`).join('')}</select><label for="enquiry-context">What would you like to improve?</label><p class="field-help" id="enquiry-context-help"></p><textarea id="enquiry-context" name="context" aria-describedby="enquiry-context-help" required maxlength="2000"></textarea><div class="enquiry-honeypot" aria-hidden="true"><label for="enquiry-website">Website</label><input id="enquiry-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="200"></div><p class="form-note" id="enquiry-privacy">We use your details to respond to this enquiry. Please don’t include passwords or sensitive documents.</p><button type="submit" class="button"><span class="enquiry-submit-label">Send enquiry</span><span aria-hidden="true">↗</span></button><div id="enquiry-result" class="confirmation" role="status" aria-live="polite" aria-atomic="true" tabindex="-1" hidden></div></form></section>`;}
 const titles={'/':'Brewling | Make room for better work','/products':'Our Products | Brewling','/solutions':'Solutions | Brewling','/why-brewling':'The Brewling Standard | Why Brewling','/company':'Company | Brewling','/contact':'Talk to Brewling'};
 function closeMenus(closeMobile=true){
  document.querySelectorAll('[data-dropdown]').forEach(b=>{b.setAttribute('aria-expanded','false');document.getElementById(b.getAttribute('aria-controls')).hidden=true;});
@@ -63,6 +64,7 @@ function closeMenus(closeMobile=true){
 }
 function openDropdown(id){closeMenus(false);document.querySelector(`#${id}-menu-button`).setAttribute('aria-expanded','true');document.querySelector(`#${id}-menu`).hidden=false;}
 function render(){
+ disposeEnquiryForm?.();disposeEnquiryForm=null;
  const route=location.hash.slice(1)||'/';const [path,query]=route.split('?');const params=new URLSearchParams(query||'');
  const p=products.find(p=>path==='/products/'+p.id);const selectedSolution=path==='/solutions'?solutions.find(s=>s.id===params.get('focus')):null;
  closeMenus();document.title=p?`${p.name} | ${p.category} | Brewling`:selectedSolution?`${selectedSolution.label} Solutions | Brewling`:(titles[path]||'Page not found | Brewling');
@@ -87,7 +89,80 @@ function updateEnquiryContext(){
   document.querySelector('#enquiry-intent').textContent=p?p.enquiryIntent:'Share the workflow you want to improve, who uses it and the systems your team works with today. You don’t need to have a product in mind.';
   document.querySelector('#enquiry-context-help').textContent=p?enquiryPrompts[p.id]:'Describe the workflow, who uses it and where work gets held up.';
 }
-function bindPage(){updateEnquiryContext();document.querySelector('#enquiry-product')?.addEventListener('change',()=>{updateEnquiryContext();document.querySelector('#enquiry-result').hidden=true;});document.querySelectorAll('.product-option').forEach((b,i)=>{b.addEventListener('click',()=>selectProduct(b.dataset.product));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowDown')n=(i+1)%products.length;else if(e.key==='ArrowUp')n=(i+products.length-1)%products.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=products.length-1;else return;e.preventDefault();selectProduct(products[n].id,true);});});document.querySelector('#enquiry-form')?.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(e.currentTarget);const result=document.querySelector('#enquiry-result');result.hidden=false;result.innerHTML=`<h3>Your enquiry preview</h3><p>Nothing has been sent or saved.</p><pre>${esc('Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nOrganisation: '+data.get('company')+'\nInterest: '+data.get('product')+'\nPurpose: '+document.querySelector('#enquiry-intent-title').textContent+(e.currentTarget.dataset.solution?'\nSolution: '+solutions.find(s=>s.id===e.currentTarget.dataset.solution).label:'')+'\n\n'+data.get('context'))}</pre>`;result.scrollIntoView({behavior:'smooth',block:'nearest'});});}
+function newEnquiryKey(){
+ if(crypto.randomUUID)return crypto.randomUUID();
+ const bytes=crypto.getRandomValues(new Uint8Array(16));bytes[6]=(bytes[6]&15)|64;bytes[8]=(bytes[8]&63)|128;
+ const hex=Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+ return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+}
+function bindEnquiryForm(form){
+ const result=form.querySelector('#enquiry-result');
+ const submit=form.querySelector('button[type="submit"]');
+ const submitLabel=submit.querySelector('.enquiry-submit-label');
+ const fields=['name','email','company','product','context'];
+ const controls=Array.from(form.querySelectorAll('input,select,textarea'));
+ let pending=false,sent=false,disposed=false,key='',lastPayload='',controller=null,timer=null;
+ const active=()=>!disposed&&form.isConnected;
+ function clearFieldErrors(){
+  form.querySelectorAll('.field-error').forEach(el=>el.remove());
+  fields.forEach(name=>{const field=form.elements.namedItem(name);field.removeAttribute('aria-invalid');const described=(field.getAttribute('aria-describedby')||'').split(' ').filter(id=>id&&id!==`enquiry-${name}-error`);if(described.length)field.setAttribute('aria-describedby',described.join(' '));else field.removeAttribute('aria-describedby');});
+ }
+ function showStatus(kind,title,message){
+  result.replaceChildren();result.hidden=false;result.dataset.state=kind;
+  result.setAttribute('role',kind==='error'?'alert':'status');result.setAttribute('aria-live',kind==='error'?'assertive':'polite');
+  const heading=document.createElement('h3');heading.textContent=title;result.append(heading);
+  const text=document.createElement('p');text.textContent=message;result.append(text);
+ }
+ function setPending(value){
+  pending=value;form.setAttribute('aria-busy',String(value));controls.forEach(field=>{field.disabled=value;});
+  submit.disabled=value||sent;submitLabel.textContent=value?'Sending…':sent?'Enquiry sent':'Send enquiry';
+ }
+ function edited(){
+  if(pending)return;
+  key='';lastPayload='';sent=false;submit.disabled=false;submitLabel.textContent='Send enquiry';
+  clearFieldErrors();result.hidden=true;result.replaceChildren();
+ }
+ form.addEventListener('input',edited);form.addEventListener('change',edited);
+ form.querySelector('#enquiry-product').addEventListener('change',updateEnquiryContext);
+ disposeEnquiryForm=()=>{disposed=true;clearTimeout(timer);controller?.abort();};
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(pending||sent||!form.reportValidity())return;
+  clearFieldErrors();
+  const data=new FormData(form);
+  const payload=JSON.stringify({name:String(data.get('name')||''),email:String(data.get('email')||''),company:String(data.get('company')||''),product:String(data.get('product')||'Not sure yet'),context:String(data.get('context')||''),solution:form.dataset.solution||'',website:String(data.get('website')||'')});
+  if(!key||payload!==lastPayload){key=newEnquiryKey();lastPayload=payload;}
+  controller=new AbortController();let timedOut=false;
+  timer=setTimeout(()=>{timedOut=true;controller.abort();},20000);
+  setPending(true);showStatus('pending','Sending your enquiry','Please wait while we send your details.');
+  let focusTarget=null;
+  try{
+   const response=await fetch('/api/enquiries',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':key},body:payload,signal:controller.signal,credentials:'same-origin'});
+   const body=await response.json();if(!active())return;
+   if(response.ok&&body?.ok===true&&typeof body.reference==='string'&&body.reference.trim()){
+    sent=true;showStatus('success','Your enquiry has been received',`Reference: ${body.reference}`);focusTarget=result;
+   }else{
+    const message=typeof body?.error==='string'&&body.error.trim()?body.error.slice(0,1000):'We couldn’t confirm your enquiry. Your details are still here. Please try again.';
+    showStatus('error','Your enquiry needs attention',message);
+    if(body?.fields&&typeof body.fields==='object')fields.forEach(name=>{
+     if(typeof body.fields[name]!=='string'||!body.fields[name].trim())return;
+     const field=form.elements.namedItem(name);const error=document.createElement('p');error.id=`enquiry-${name}-error`;error.className='field-error';error.textContent=body.fields[name].slice(0,500);field.insertAdjacentElement('afterend',error);field.setAttribute('aria-invalid','true');field.setAttribute('aria-describedby',`${field.getAttribute('aria-describedby')||''} ${error.id}`.trim());if(!focusTarget)focusTarget=field;
+    });
+    focusTarget=focusTarget||result;
+   }
+  }catch(error){
+   if(!active())return;
+   showStatus('error','We couldn’t confirm your enquiry',timedOut?'The request took too long. Your details are still here. Please try again.':'There was a connection problem. Your details are still here. Please try again.');focusTarget=result;
+  }finally{
+   clearTimeout(timer);controller=null;
+   if(active()){setPending(false);focusTarget?.focus({preventScroll:true});if(focusTarget)focusTarget.scrollIntoView({behavior:'auto',block:'nearest'});}
+  }
+ });
+}
+function bindPage(){
+ updateEnquiryContext();
+ document.querySelectorAll('.product-option').forEach((b,i)=>{b.addEventListener('click',()=>selectProduct(b.dataset.product));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowDown')n=(i+1)%products.length;else if(e.key==='ArrowUp')n=(i+products.length-1)%products.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=products.length-1;else return;e.preventDefault();selectProduct(products[n].id,true);});});
+ const form=document.querySelector('#enquiry-form');if(form)bindEnquiryForm(form);
+}
 document.querySelector('#products-menu').innerHTML=`<div class="mega-top"><h3>Find a better way to work.</h3><a href="#/products">See all products ↗</a></div><div class="mega-groups"><section><a class="mega-group-heading" href="#/products?audience=institutions">Institutions & enterprises ↗</a><div class="mega-list">${products.filter(p=>p.id==='databrew').map(p=>`<a href="${productURL(p)}" style="${theme(p)}"><b>${p.name}</b><small>${p.category}</small></a>`).join('')}</div></section><section><a class="mega-group-heading" href="#/products?audience=teams">Operating teams ↗</a><div class="mega-list">${products.filter(p=>p.id!=='databrew').map(p=>`<a href="${productURL(p)}" style="${theme(p)}"><b>${p.name}</b><small>${p.category}</small></a>`).join('')}</div></section></div>`;
 document.querySelector('#solutions-menu').innerHTML=solutionMenu();
 document.querySelector('#footer-products').innerHTML=products.map(p=>`<a href="${productURL(p)}">${p.name}</a>`).join('');
