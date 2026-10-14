@@ -1,6 +1,7 @@
 window.BREWLING_PRODUCTS = [
   {
     "id": "databrew",
+    "websiteUrl": "https://usedatabrew.com/",
     "name": "Databrew",
     "category": "Enterprise AI",
     "accent": "#9B9AFF",
