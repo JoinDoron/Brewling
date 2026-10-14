@@ -27,7 +27,7 @@ html{scroll-padding-top:100px}body{font-family:Inter,-apple-system,BlinkMacSyste
 .hero-enterprise .hero-copy{max-width:none;min-width:0}
 .hero-enterprise .hero-copy .hero-eyebrow{font-size:11px;margin-bottom:25px}
 .hero-enterprise .hero-copy h1{max-width:940px;font-size:clamp(42px,4.3vw,56px);line-height:1.1;letter-spacing:-.038em;text-wrap:pretty}
-.hero-enterprise .hero-copy h1>span{display:block;margin-top:.18em}
+.hero-enterprise .hero-copy h1>span{display:block;margin-top:.18em;color:#fff}
 .hero-enterprise .hero-copy>p{font-size:17px;line-height:1.6;max-width:none;color:#b6b7c2;margin:26px 0}
 .hero-enterprise .hero-side-note{display:block}
 .hero-enterprise .hero-side-note p{font-size:12px}
