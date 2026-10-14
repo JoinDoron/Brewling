@@ -70,9 +70,9 @@ function bindLogoMotion(){
  });
 }
 function home(){return `
-<section class="hero wrap">
- <div class="hero-copy"><span class="eyebrow hero-eyebrow"><i></i> Purpose-built. AI-powered. Human-led.</span><h1>Make room for<br><span>better work.</span></h1><p>Five focused AI products for knowledge, transactions, people, finance and property. Built around the work that moves your business forward.</p><div class="actions">${button('Explore the products','#/products')}${textLink('Meet Brewling','#/company')}</div></div>
- <div class="hero-side-note"><span class="orbit-symbol" aria-hidden="true">✳</span><p>Different work.<br>A shared standard.</p><span>Nigeria first. Africa in mind.</span></div>
+<section class="hero hero-enterprise wrap">
+ <div class="hero-copy"><span class="eyebrow hero-eyebrow"><i></i> Purpose-built AI for enterprise.</span><h1>Specialist products for knowledge, transactions, people, finance and property. <span>They handle the volume; your people sign off on what matters.</span></h1><p>AI does the legwork. You make the call.</p><div class="actions">${button('Explore the products','#/products')}${textLink('Meet Brewling','#/company')}</div></div>
+ <div class="hero-side-note"><span class="orbit-symbol" aria-hidden="true">✳</span><p>Automated where it helps.<br>Human where it counts.</p><span>Nigeria first. Africa in mind.</span></div>
 </section>
 ${prospectStrip()}
 <section class="portfolio-preview wrap" aria-label="Explore the Brewling products">
