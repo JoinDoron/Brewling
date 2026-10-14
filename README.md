@@ -27,3 +27,11 @@ Includes the reviewed product pages, Solutions navigation, fourteen solution vie
 The contact form is explicitly a browser-only enquiry preview. It does not submit, save or email information; connecting an approved destination is separate work.
 
 Local fonts are distributed with their OFL licences in `public/assets/fonts`.
+
+## Visual system
+
+The website uses locally hosted Inter Variable for all interface typography, with near-black surfaces, soft white text, fine borders and restrained violet accents. The Brewling mark is retained in a violet and white lockup. Each product has a muted accent within the same dark palette.
+
+`site.css` contains the original structural styles; `design-system.css` defines the current shared visual system, navigation, homepage and illustrative product interfaces; `design-pages.css` covers the inner pages. Load them in that order.
+
+The homepage product tabs support arrow keys, Home and End. Product illustrations show one product at a time and remain labelled as illustrative workflows. They do not represent a live shared workspace or verified integrations between products.
