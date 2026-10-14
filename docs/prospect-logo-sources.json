@@ -1,0 +1,171 @@
+{
+  "retrieved_on": "2026-10-14",
+  "selection_note": "Product relevance is a Brewling prospecting inference, not a statement made by the named organization. No outreach or qualification has been performed.",
+  "client_prospects": [
+    {
+      "name": "Access Bank",
+      "file": "access-bank.png",
+      "source_page": "https://www.accessbankplc.com/",
+      "asset_url": "https://www.accessbankplc.com/Content/images/access-lg-logo.png",
+      "sector": "Banking and financial services",
+      "products": [
+        "Databrew",
+        "Hirebrew",
+        "Ledgerbrew"
+      ],
+      "rationale": "Prospective use cases: governed internal knowledge, recruitment workflows and finance operations. Sector validated by official banking services website.",
+      "bytes": 6659,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 143,
+      "height": 41,
+      "transparency": true
+    },
+    {
+      "name": "Dangote",
+      "file": "dangote.png",
+      "source_page": "https://www.dangote.com/about-us/",
+      "asset_url": "https://www.dangote.com/wp-content/uploads/2020/04/Dangote-logo-svg-2.png",
+      "sector": "Manufacturing and industry",
+      "products": [
+        "Databrew",
+        "Dealbrew",
+        "Hirebrew",
+        "Ledgerbrew"
+      ],
+      "rationale": "Prospective use cases: institutional knowledge, supplier transaction evidence, recruiting and finance operations. Official site describes diversified manufacturing operations in Nigeria and Africa.",
+      "bytes": 2268,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 103,
+      "height": 55,
+      "transparency": true
+    },
+    {
+      "name": "MTN",
+      "file": "mtn.svg",
+      "source_page": "https://www.mtn.com/",
+      "asset_url": "https://www.mtn.com/wp-content/themes/mtn-refresh/public/img/mtn-logo-footer.svg",
+      "sector": "Telecommunications and digital services",
+      "products": [
+        "Databrew",
+        "Hirebrew",
+        "Ledgerbrew"
+      ],
+      "rationale": "Prospective use cases: enterprise knowledge, recruiting and finance operations across African markets. Official site identifies mobile connectivity and digital solutions in Africa.",
+      "bytes": 881,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 567,
+      "height": 284,
+      "transparency": true,
+      "svg_safety_checked": true
+    },
+    {
+      "name": "Safaricom",
+      "file": "safaricom.svg",
+      "source_page": "https://internet.safaricom.co.ke/",
+      "asset_url": "https://internet.safaricom.co.ke/assets/safaricom-white-logo-CUjcZGJR.svg",
+      "sector": "Telecommunications and digital services",
+      "products": [
+        "Databrew",
+        "Hirebrew",
+        "Ledgerbrew"
+      ],
+      "rationale": "Prospective use cases: enterprise knowledge, recruiting and finance operations. Official website offers Kenyan home and business connectivity. White logo URL identified from public asset bundle /assets/index-B7uvYnyT.js.",
+      "bytes": 7948,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 150,
+      "height": 40,
+      "transparency": true,
+      "svg_safety_checked": true
+    },
+    {
+      "name": "Jumia",
+      "file": "jumia.svg",
+      "source_page": "https://www.jumia.com.ng",
+      "sector_source": "https://group.jumia.com/",
+      "asset_url": "https://www.jumia.com.ng/assets_he/logo_jumia.svg",
+      "sector": "E-commerce and logistics",
+      "products": [
+        "Dealbrew",
+        "Ledgerbrew",
+        "Databrew",
+        "Hirebrew"
+      ],
+      "rationale": "Prospective use cases: supplier transaction workflows, reconciliation, internal knowledge and recruiting. Official group website identifies its pan-African marketplace and logistics business.",
+      "bytes": 1140,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 138,
+      "height": 24,
+      "transparency": true,
+      "svg_safety_checked": true
+    },
+    {
+      "name": "UPDC",
+      "file": "updc.png",
+      "source_page": "https://updcplc.com/",
+      "asset_url": "https://updcplc.com/wp-content/uploads/2022/06/updc-white-logo-1-e1711118904385.png",
+      "sector": "Property development and facility management",
+      "products": [
+        "Propbrew",
+        "Ledgerbrew",
+        "Dealbrew"
+      ],
+      "rationale": "Prospective use cases: estate and facility operations, finance and commercial transaction workflows. Official website expressly lists property development, facility management, advisory services and hospitality.",
+      "bytes": 84326,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 3893,
+      "height": 1935,
+      "transparency": true
+    },
+    {
+      "name": "Mixta Africa",
+      "file": "mixta-africa.png",
+      "source_page": "https://mixtafrica.com/",
+      "asset_url": "https://mixtafrica.com/wp-content/uploads/2023/09/mixtafrica-logo-1.png",
+      "sector": "Property development and communities",
+      "products": [
+        "Propbrew",
+        "Ledgerbrew",
+        "Dealbrew"
+      ],
+      "rationale": "Prospective use cases: estate operations, finance and property-related commercial workflows. Official website shows communities across Nigeria, Senegal, Tunisia, Morocco and C\u00f4te d\u2019Ivoire.",
+      "bytes": 13647,
+      "relationship": "Illustrative potential client only; no current client, partnership, endorsement or product adoption is asserted.",
+      "width": 187,
+      "height": 94,
+      "transparency": true
+    }
+  ],
+  "technology_candidates": [
+    {
+      "name": "anthropic_white_wordmark.svg",
+      "download_url": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/anthropic_white_wordmark.svg",
+      "html_url": "https://github.com/pheralb/svgl/blob/main/static/library/anthropic_white_wordmark.svg",
+      "local_file": "anthropic.svg"
+    },
+    {
+      "name": "aws_dark.svg",
+      "download_url": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/aws_dark.svg",
+      "html_url": "https://github.com/pheralb/svgl/blob/main/static/library/aws_dark.svg",
+      "local_file": "aws.svg"
+    },
+    {
+      "name": "azure.svg",
+      "download_url": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/azure.svg",
+      "html_url": "https://github.com/pheralb/svgl/blob/main/static/library/azure.svg",
+      "local_file": "azure.svg"
+    },
+    {
+      "name": "google-cloud.svg",
+      "download_url": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/google-cloud.svg",
+      "html_url": "https://github.com/pheralb/svgl/blob/main/static/library/google-cloud.svg",
+      "local_file": "google-cloud.svg"
+    },
+    {
+      "name": "openai_wordmark_dark.svg",
+      "download_url": "https://raw.githubusercontent.com/pheralb/svgl/main/static/library/openai_wordmark_dark.svg",
+      "html_url": "https://github.com/pheralb/svgl/blob/main/static/library/openai_wordmark_dark.svg",
+      "local_file": "openai.svg"
+    }
+  ],
+  "technology_note": "Illustrative AI and cloud technology partner prospects; this does not assert active partnerships, integrations or deployed use. Original SVGs distributed by the public SVGL catalog."
+}

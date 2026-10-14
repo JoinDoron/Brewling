@@ -21,3 +21,59 @@ html{scroll-padding-top:100px}body{font-family:Inter,-apple-system,BlinkMacSyste
 /* Product hero copy spacing must not leak into the illustrative interface. */
 .product-hero .workflow-preview p{margin:0}
 .product-hero .workflow-preview .human-review p{margin-top:3px}
+
+/* Prospective organisations: two quiet, continuously looping logo rows. */
+.prospect-strip{margin-top:2px;margin-bottom:54px;padding-top:24px;border-top:1px solid var(--line)}
+.prospect-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.prospect-heading h2{font-size:16px;line-height:1.4;letter-spacing:-.025em;color:#c8c8d1}
+.prospect-strip #prospect-note{font-size:11px;line-height:1.6;color:var(--muted);margin:6px 0 25px;max-width:620px}
+.logo-motion-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex-shrink:0;min-height:36px;padding:7px 10px;border:1px solid #303138;border-radius:6px;background:transparent;color:#a9a9b6;font-size:10px;cursor:pointer}
+.logo-motion-toggle:hover{color:#f1f1f4;background:#17181e}
+.logo-motion-toggle svg{width:12px;height:12px}
+.logo-motion-toggle .motion-play,.motion-paused .motion-pause{display:none}
+.motion-paused .motion-play{display:block}
+.logo-row{display:grid;grid-template-columns:162px minmax(0,1fr);align-items:center;gap:20px}
+.logo-row+ .logo-row{margin-top:6px}
+.logo-row h3{font-size:10px;font-weight:450;line-height:1.6;letter-spacing:0;color:#92929f;max-width:145px}
+.logo-window{overflow:hidden;min-width:0;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
+.logo-track{display:flex;width:max-content;animation:prospect-drift 48s linear infinite;will-change:transform}
+.logo-row-reverse .logo-track{animation-duration:52s;animation-direction:reverse}
+.logo-group{display:flex;align-items:center;justify-content:space-around;flex-shrink:0;min-width:1160px;list-style:none;padding:0;margin:0}
+.prospect-logo{display:flex;align-items:center;justify-content:center;flex:0 0 166px;height:68px;margin:0;padding:0 17px;gap:9px;color:#d6d6df}
+.prospect-logo img{display:block;width:132px;height:44px;object-fit:contain;filter:grayscale(1);opacity:.76;max-width:none}
+.prospect-logo.logo-openai img{width:194px;height:87px}
+.prospect-logo.logo-anthropic img{width:132px;height:28px}
+.prospect-logo.logo-aws img{width:64px;height:43px}
+.prospect-logo.logo-mtn img{width:76px;height:42px}
+.prospect-logo.logo-updc img{width:78px;height:44px}
+.prospect-logo.logo-access img,.prospect-logo.logo-mixta img,.prospect-logo.logo-jumia img{filter:grayscale(1) brightness(0) invert(1)}
+.prospect-logo.logo-tech-icon{flex-basis:232px}
+.prospect-logo.logo-tech-icon img{width:27px;height:27px;flex-shrink:0}
+.prospect-logo.logo-tech-icon span{font-size:16px;font-weight:500;letter-spacing:-.035em;white-space:nowrap;opacity:.85}
+.prospect-strip.motion-paused .logo-track{animation-play-state:paused}
+@media(hover:hover){.prospect-strip:hover .logo-track{animation-play-state:paused}}
+@keyframes prospect-drift{to{transform:translateX(-50%)}}
+@media(max-width:760px){
+ .prospect-strip{padding-top:18px;margin-top:0;margin-bottom:35px}
+ .prospect-heading h2{font-size:14px;max-width:200px}
+ .logo-motion-toggle{padding:8px;min-width:44px;min-height:44px}
+ .logo-motion-toggle span{display:none}
+ .prospect-strip #prospect-note{font-size:10px;margin-top:9px;margin-bottom:19px;max-width:350px}
+ .logo-row{grid-template-columns:1fr;gap:3px}
+ .logo-row h3{max-width:none;font-size:9px}
+ .logo-row+ .logo-row{margin-top:13px}
+ .logo-window{mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
+ .prospect-logo{height:60px}
+}
+@media(prefers-reduced-motion:reduce){
+ .logo-motion-toggle{display:none}
+ .logo-row{grid-template-columns:1fr;gap:10px}
+ .logo-row+ .logo-row{margin-top:20px}
+ .logo-row h3{max-width:none}
+ .logo-window{overflow:visible;mask-image:none}
+ .logo-track{width:100%;transform:none;will-change:auto}
+ .logo-group{min-width:0;width:100%;flex-wrap:wrap;justify-content:flex-start;gap:10px 0}
+ .logo-group[aria-hidden=true]{display:none}
+ .prospect-logo{flex:0 0 20%;min-width:140px}
+ .prospect-logo.logo-tech-icon{flex-basis:232px}
+}

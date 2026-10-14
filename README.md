@@ -35,3 +35,9 @@ The website uses locally hosted Inter Variable for all interface typography, wit
 `site.css` contains the original structural styles; `design-system.css` defines the current shared visual system, navigation, homepage and illustrative product interfaces; `design-pages.css` covers the inner pages. Load them in that order.
 
 The homepage product tabs support arrow keys, Home and End. Product illustrations show one product at a time and remain labelled as illustrative workflows. They do not represent a live shared workspace or verified integrations between products.
+
+## Prospective organisation strip
+
+The homepage displays seven Nigerian/African client prospects and five AI/cloud technology partner prospects beneath the hero. They are illustrative targets, not existing customers, partners, endorsements or verified integrations. The visible labels must remain until a relationship is independently confirmed.
+
+Assets are served locally from `public/assets/prospects`; their original sources and inferred product relevance are recorded in `docs/prospect-logo-sources.json`. The two CSS logo loops share a keyboard-operable pause/resume button, pause on hover, hide duplicate lists from assistive technology and become static wrapped lists with reduced motion enabled.

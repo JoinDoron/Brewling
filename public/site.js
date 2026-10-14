@@ -32,11 +32,49 @@ const previewMoments={
  propbrew:{section:'Service requests',item:'Water pump maintenance',title:'Every request has a next step.',prompt:'Turn this resident report into a clear work order.',answer:'Summarise the reported issue, suggest a service category and prepare a work order for the estate team to review.',sources:['Resident report','Service history'],detail:'Maintenance coordination',steps:['Issue reported','Work order drafted','Team review','Resolution evidence'],note:'The estate team assigns work and verifies resolution.'}
 };
 function workflowPreview(p,compact=false){const m=previewMoments[p.id];return `<div class="workflow-preview${compact?' compact-preview':''}" style="${theme(p)}"><div class="preview-toolbar"><div>${productIcon(p)}<strong>${p.name}</strong><span class="toolbar-separator">/</span><span class="preview-workspace">${m.section}</span></div><span class="illustrative-label">Illustrative workflow</span></div><div class="preview-content"><aside class="preview-sidebar" aria-hidden="true"><span class="workspace-label">EXAMPLE WORKSPACE</span><div class="sidebar-item"><span>▦</span> Overview</div><div class="sidebar-item selected"><span>◇</span> ${m.section}</div><div class="sidebar-item"><span>◷</span> Activity</div><div class="sidebar-rule"></div><span class="workspace-label">WORKFLOW</span>${m.steps.map((s,i)=>`<div class="sidebar-step"><i class="${i<2?'complete':i===2?'in-review':''}">${i<2?'✓':i+1}</i>${s}</div>`).join('')}<div class="sidebar-bottom"><span class="live-dot"></span> People stay in control</div></aside><div class="preview-main"><div class="preview-breadcrumb">${m.section}<span>/</span>${m.item}<span class="preview-ellipsis" aria-hidden="true">···</span></div><div class="preview-work"><span class="preview-kicker">${m.detail}</span><h3>${m.title}</h3><div class="preview-prompt"><span class="prompt-avatar" aria-hidden="true">B</span><p>${m.prompt}</p></div><div class="assistant-card"><div class="assistant-title"><span class="spark-icon" aria-hidden="true">✧</span><strong>${p.name} assist</strong><span>Draft prepared</span></div><p>${m.answer}</p><div class="source-chips">${m.sources.map((s,i)=>`<span><i>${i+1}</i>${s}</span>`).join('')}</div></div><div class="human-review"><span class="review-symbol" aria-hidden="true">◉</span><div><strong>Ready for your review</strong><p>${m.note}</p></div><span aria-hidden="true">↗</span></div></div><div class="preview-statusbar"><span><i></i> ${p.stageLabel}</span><span>Illustration of the product direction</span></div></div></div></div>`;}
+// These organisations are an illustrative prospect list, not customer or integration claims.
+const prospectLogos={
+ clients:[
+  {name:'Access Bank',file:'access-bank.png',style:'access'},
+  {name:'Dangote',file:'dangote.png',style:'dangote'},
+  {name:'MTN',file:'mtn.svg',style:'mtn'},
+  {name:'Safaricom',file:'safaricom.svg',style:'safaricom'},
+  {name:'Jumia',file:'jumia.svg',style:'jumia'},
+  {name:'UPDC',file:'updc.png',style:'updc'},
+  {name:'Mixta Africa',file:'mixta-africa.png',style:'mixta'}
+ ],
+ technology:[
+  {name:'OpenAI',file:'openai.svg',style:'openai'},
+  {name:'Anthropic',file:'anthropic.svg',style:'anthropic'},
+  {name:'Amazon Web Services',file:'aws.svg',style:'aws'},
+  {name:'Microsoft Azure',file:'azure.svg',style:'tech-icon',label:'Microsoft Azure'},
+  {name:'Google Cloud',file:'google-cloud.svg',style:'tech-icon',label:'Google Cloud'}
+ ]
+};
+function logoRow(items,label,reverse=false){
+ const group=duplicate=>`<ul class="logo-group"${duplicate?' aria-hidden="true"':' role="list"'}>${items.map(item=>`<li class="prospect-logo logo-${item.style}"><img src="assets/prospects/${item.file}" alt="${duplicate||item.label?'':esc(item.name)}" width="180" height="64" decoding="async" draggable="false">${item.label?`<span>${esc(item.label)}</span>`:''}</li>`).join('')}</ul>`;
+ return `<div class="logo-row${reverse?' logo-row-reverse':''}"><h3>${label}</h3><div class="logo-window"><div class="logo-track">${group(false)}${group(true)}</div></div></div>`;
+}
+function prospectStrip(){return `<section class="prospect-strip wrap" aria-labelledby="prospect-heading" aria-describedby="prospect-note">
+ <div class="prospect-heading"><h2 id="prospect-heading">African ambition. Global technology.</h2><button class="logo-motion-toggle" type="button" aria-controls="prospect-rows" aria-label="Pause motion"><svg class="motion-pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg><svg class="motion-play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg><span>Pause motion</span></button></div>
+ <p id="prospect-note">Potential clients and technology partners. An illustrative shortlist, with no current affiliation.</p>
+ <div id="prospect-rows">${logoRow(prospectLogos.clients,'Client prospects · Nigeria & Africa')}${logoRow(prospectLogos.technology,'Technology partner prospects',true)}</div>
+</section>`;}
+function bindLogoMotion(){
+ const strip=document.querySelector('.prospect-strip');
+ const toggle=strip?.querySelector('.logo-motion-toggle');
+ toggle?.addEventListener('click',()=>{
+  const paused=strip.classList.toggle('motion-paused');
+  toggle.setAttribute('aria-label',paused?'Resume motion':'Pause motion');
+  toggle.querySelector('span').textContent=paused?'Resume motion':'Pause motion';
+ });
+}
 function home(){return `
 <section class="hero wrap">
  <div class="hero-copy"><span class="eyebrow hero-eyebrow"><i></i> Purpose-built. AI-powered. Human-led.</span><h1>Make room for<br><span>better work.</span></h1><p>Five focused AI products for knowledge, transactions, people, finance and property. Built around the work that moves your business forward.</p><div class="actions">${button('Explore the products','#/products')}${textLink('Meet Brewling','#/company')}</div></div>
  <div class="hero-side-note"><span class="orbit-symbol" aria-hidden="true">✳</span><p>Different work.<br>A shared standard.</p><span>Nigeria first. Africa in mind.</span></div>
 </section>
+${prospectStrip()}
 <section class="portfolio-preview wrap" aria-label="Explore the Brewling products">
  <div class="product-options" role="tablist" aria-label="Choose a product workflow" aria-orientation="horizontal">${products.map((p,i)=>`<button class="product-option" role="tab" id="tab-${p.id}" aria-controls="product-panel" aria-selected="${i===0}" tabindex="${i===0?0:-1}" data-product="${p.id}" style="${theme(p)}">${productIcon(p)}<span><strong>${p.name}</strong><small>${p.category}</small></span><span class="tab-indicator" aria-hidden="true"></span></button>`).join('')}</div>
  <div id="product-panel" role="tabpanel" aria-labelledby="tab-databrew" tabindex="0">${workflowPreview(products[0])}</div>
@@ -118,7 +156,7 @@ function updateEnquiryContext(){
   document.querySelector('#enquiry-intent').textContent=p?p.enquiryIntent:'Share the workflow you want to improve, who uses it and the systems your team works with today. You don’t need to have a product in mind.';
   document.querySelector('#enquiry-context-help').textContent=p?enquiryPrompts[p.id]:'Describe the workflow, who uses it and where work gets held up.';
 }
-function bindPage(){updateEnquiryContext();document.querySelector('#enquiry-product')?.addEventListener('change',()=>{updateEnquiryContext();document.querySelector('#enquiry-result').hidden=true;});document.querySelectorAll('.product-option').forEach((b,i)=>{b.addEventListener('click',()=>selectProduct(b.dataset.product));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=(i+1)%products.length;else if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=(i+products.length-1)%products.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=products.length-1;else return;e.preventDefault();selectProduct(products[n].id,true);});});document.querySelector('#enquiry-form')?.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(e.currentTarget);const result=document.querySelector('#enquiry-result');result.hidden=false;result.innerHTML=`<h3>Your enquiry preview</h3><p>Nothing has been sent or saved.</p><pre>${esc('Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nOrganisation: '+data.get('company')+'\nInterest: '+data.get('product')+'\nPurpose: '+document.querySelector('#enquiry-intent-title').textContent+(e.currentTarget.dataset.solution?'\nSolution: '+solutions.find(s=>s.id===e.currentTarget.dataset.solution).label:'')+'\n\n'+data.get('context'))}</pre>`;result.scrollIntoView({behavior:'smooth',block:'nearest'});});}
+function bindPage(){bindLogoMotion();updateEnquiryContext();document.querySelector('#enquiry-product')?.addEventListener('change',()=>{updateEnquiryContext();document.querySelector('#enquiry-result').hidden=true;});document.querySelectorAll('.product-option').forEach((b,i)=>{b.addEventListener('click',()=>selectProduct(b.dataset.product));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowDown'||e.key==='ArrowRight')n=(i+1)%products.length;else if(e.key==='ArrowUp'||e.key==='ArrowLeft')n=(i+products.length-1)%products.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=products.length-1;else return;e.preventDefault();selectProduct(products[n].id,true);});});document.querySelector('#enquiry-form')?.addEventListener('submit',e=>{e.preventDefault();const data=new FormData(e.currentTarget);const result=document.querySelector('#enquiry-result');result.hidden=false;result.innerHTML=`<h3>Your enquiry preview</h3><p>Nothing has been sent or saved.</p><pre>${esc('Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nOrganisation: '+data.get('company')+'\nInterest: '+data.get('product')+'\nPurpose: '+document.querySelector('#enquiry-intent-title').textContent+(e.currentTarget.dataset.solution?'\nSolution: '+solutions.find(s=>s.id===e.currentTarget.dataset.solution).label:'')+'\n\n'+data.get('context'))}</pre>`;result.scrollIntoView({behavior:'smooth',block:'nearest'});});}
 document.querySelector('#products-menu').innerHTML=`<div class="mega-top"><div><span class="eyebrow">The Brewling family</span><h3>Find your better work.</h3></div><a href="#/products">Explore all products <span aria-hidden="true">→</span></a></div><div class="product-menu-grid">${products.map(p=>`<a href="${productURL(p)}" style="${theme(p)}">${productIcon(p)}<b>${p.name}</b><small>${p.category}</small><span class="menu-product-arrow" aria-hidden="true">↗</span></a>`).join('')}</div>`;
 document.querySelector('#solutions-menu').innerHTML=solutionMenu();
 document.querySelector('#footer-products').innerHTML=products.map(p=>`<a href="${productURL(p)}">${p.name}</a>`).join('');
