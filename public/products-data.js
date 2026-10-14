@@ -7,7 +7,7 @@ window.BREWLING_PRODUCTS = [
     "accent": "#9B9AFF",
     "tint": "#181828",
     "hero": "Put your knowledge to work.",
-    "intro": "Find the information your organisation can use. Give AI a clear task. Review the result. We’re building Databrew to make these steps part of one governed workspace.",
+    "intro": "Find the information your organisation can use. Give AI a clear task. Review the result. Keep these steps together in one governed workspace.",
     "audience": "For enterprises, public institutions and teams with complex information needs.",
     "problemTitle": "The answer exists. Getting to it takes work.",
     "problemBody": "Policies, reports, decisions and working documents are spread across teams and systems. Finding the right information is only the beginning: people also need to understand its source, decide who can use it and turn it into action.",
@@ -57,8 +57,8 @@ window.BREWLING_PRODUCTS = [
       }
     ],
     "aiTitle": "Start with the evidence. Leave with a clearer next step.",
-    "aiBody": "The intended experience connects the response to permitted source material, keeps uncertainty visible and gives the reviewer the final say on what happens next.",
-    "aiControl": "The product design includes scoped agent permissions and human approval for configured consequential external actions. The approval rules need to be defined and verified for each deployment.",
+    "aiBody": "Connect each response to permitted source material, keep uncertainty visible and give the reviewer the final say on what happens next.",
+    "aiControl": "Set scoped agent permissions and human approval for configured consequential external actions. Define and verify approval rules for each deployment.",
     "shortDescription": "An AI workspace for finding approved information, coordinating agents and reviewing the work they do.",
     "keys": [
       "Knowledge search",
@@ -74,7 +74,7 @@ window.BREWLING_PRODUCTS = [
     "accent": "#E0AD84",
     "tint": "#231C18",
     "hero": "Move from agreement to completion.",
-    "intro": "A signature is one step in a bigger commitment. We’re building Dealbrew to bring counterparties, terms, delivery, partner-held escrow and proof into one transaction workspace.",
+    "intro": "A signature is one step in a bigger commitment. Bring counterparties, terms, delivery, partner-held escrow and proof into one transaction workspace.",
     "audience": "For service businesses, procurement teams, property and project businesses, and digital platforms.",
     "problemTitle": "Every agreement comes with a “what happens next?”",
     "problemBody": "Who is authorised to sign? Has the work been accepted? What needs to happen before payment is released? Where is the evidence? These questions belong with the transaction, where every responsible party can understand the next step.",
@@ -94,7 +94,7 @@ window.BREWLING_PRODUCTS = [
       },
       {
         "title": "Settle under clear conditions",
-        "body": "Design funding, release and refund steps around approved partners and explicit human controls. Preserve the record through exceptions, disputes and completion."
+        "body": "Structure funding, release and refund steps around approved partners and explicit human controls. Preserve the record through exceptions, disputes and completion."
       }
     ],
     "capabilities": [
@@ -124,7 +124,7 @@ window.BREWLING_PRODUCTS = [
       }
     ],
     "aiTitle": "Turn the agreement into a plan people can review.",
-    "aiBody": "Dealbrew’s AI design covers source-linked summaries, version comparisons and suggested obligations, milestones and follow-up work. Proposed steps stay open for human review before they become part of the transaction.",
+    "aiBody": "Use AI to prepare source-linked summaries, compare versions and suggest obligations, milestones and follow-up work. Review proposed steps before they become part of the transaction.",
     "aiControl": "Signing, authority changes, payment decisions and dispute outcomes remain with authorised people and approved operating processes.",
     "shortDescription": "A workspace for counterparty verification, agreements, partner-held escrow, milestone delivery and proof.",
     "keys": [
@@ -142,10 +142,10 @@ window.BREWLING_PRODUCTS = [
     "accent": "#7ECCAE",
     "tint": "#15221D",
     "hero": "Better work starts with people.",
-    "intro": "From the first application to the everyday employee experience, the details matter. We’re building Hirebrew to connect the people, records and conversations behind better people operations.",
+    "intro": "From the first application to the everyday employee experience, the details matter. Connect the people, records and conversations behind better people operations.",
     "audience": "For HR teams, recruiters, managers and the people they support.",
     "problemTitle": "Give people a clear path through the process.",
-    "problemBody": "Candidates need to know what comes next. Interviewers need the right context. Employees need a clear answer to a request. HR needs a record that carries the conversation forward. Hirebrew is designed around these connected experiences.",
+    "problemBody": "Candidates need to know what comes next. Interviewers need the right context. Employees need a clear answer to a request. HR needs a record that carries the conversation forward. Keep these experiences connected.",
     "workflowTitle": "Keep the people journey connected.",
     "steps": [
       {
@@ -192,7 +192,7 @@ window.BREWLING_PRODUCTS = [
       }
     ],
     "aiTitle": "Less repetitive administration. More considered decisions.",
-    "aiBody": "AI can help draft a role, prepare interview questions, summarise a conversation or suggest a response to a routine request. Hirebrew’s design keeps the supporting context visible and allows people to edit, reject or correct the suggestion.",
+    "aiBody": "Use AI to draft a role, prepare interview questions, summarise a conversation or suggest a response to a routine request. Keep the supporting context visible so people can edit, reject or correct the suggestion.",
     "aiControl": "Hiring, promotion, pay, disciplinary and exit decisions require accountable human review.",
     "shortDescription": "People operations that connect recruitment, onboarding, employee services and development.",
     "keys": [
@@ -209,10 +209,10 @@ window.BREWLING_PRODUCTS = [
     "accent": "#D9C282",
     "tint": "#242016",
     "hero": "Bring clarity to your finance operations.",
-    "intro": "Know what needs approval, what customers owe and what is ready to reconcile. We’re building Ledgerbrew around the daily work between an invoice arriving and a period closing.",
+    "intro": "Know what needs approval, what customers owe and what is ready to reconcile. Bring clarity to the daily work between an invoice arriving and a period closing.",
     "audience": "For CFOs, controllers and finance teams in Nigerian mid-sized and large organisations.",
     "problemTitle": "Finance needs the full picture behind the number.",
-    "problemBody": "An invoice needs evidence. A payment needs approval. A bank credit needs a match. A journal needs a clear source. Ledgerbrew is designed to connect these steps alongside the accounting system your team already uses.",
+    "problemBody": "An invoice needs evidence. A payment needs approval. A bank credit needs a match. A journal needs a clear source. Connect these steps alongside the accounting system your team already uses.",
     "workflowTitle": "Follow the money. Keep the control.",
     "steps": [
       {
@@ -243,7 +243,7 @@ window.BREWLING_PRODUCTS = [
       },
       {
         "title": "Tax and e-invoicing",
-        "body": "VAT, withholding-tax evidence and Nigerian MBS workflow design."
+        "body": "VAT, withholding-tax evidence and Nigerian MBS workflow requirements."
       },
       {
         "title": "Reconciliation",
@@ -259,7 +259,7 @@ window.BREWLING_PRODUCTS = [
       }
     ],
     "aiTitle": "Let AI do the first pass. Keep finance in control.",
-    "aiBody": "Ledgerbrew’s AI design helps extract invoice fields, suggest bank matches and draft collection messages. Source documents, confidence and review history help the team decide what to accept.",
+    "aiBody": "Use AI to extract invoice fields, suggest bank matches and draft collection messages. Review source documents, confidence and review history before deciding what to accept.",
     "aiControl": "Payment release, tax-rule changes, exception clearance and consequential customer communications remain subject to authorised human controls.",
     "shortDescription": "Invoice controls, collections, tax workflows and reconciliation alongside your existing accounting system.",
     "keys": [
@@ -276,10 +276,10 @@ window.BREWLING_PRODUCTS = [
     "accent": "#C1A0DF",
     "tint": "#211A29",
     "hero": "Keep every estate running.",
-    "intro": "Behind a well-run estate is a team keeping hundreds of details in view. We’re building Propbrew to bring facilities, residents, collections and maintenance into a clearer operating picture.",
-    "audience": "For estate operators, facility managers and property businesses. Starting in Lagos.",
+    "intro": "Behind a well-run estate is a team keeping hundreds of details in view. Bring facilities, residents, collections and maintenance into a clearer operating picture.",
+    "audience": "For estate operators, facility managers and property businesses in Lagos.",
     "problemTitle": "A resident’s request is the start of a workflow.",
-    "problemBody": "It can become a work order, a vendor assignment, a cost, an approval and a record of completion. Propbrew is designed to keep that context with the work, so the right person knows what needs attention next.",
+    "problemBody": "It can become a work order, a vendor assignment, a cost, an approval and a record of completion. Keep that context with the work, so the right person knows what needs attention next.",
     "workflowTitle": "From the estate office to the field.",
     "steps": [
       {
@@ -292,7 +292,7 @@ window.BREWLING_PRODUCTS = [
       },
       {
         "title": "Keep the field connected",
-        "body": "Design for mobile updates, evidence capture and intermittent connectivity. Make queued changes and sync issues visible to the person doing the work."
+        "body": "Coordinate mobile updates, evidence capture and work during intermittent connectivity. Make queued changes and sync issues visible to the person doing the work."
       },
       {
         "title": "Verify and learn",
@@ -326,7 +326,7 @@ window.BREWLING_PRODUCTS = [
       }
     ],
     "aiTitle": "Turn operational detail into a useful starting point.",
-    "aiBody": "Propbrew’s AI direction includes request triage, maintenance suggestions, document search and communication drafts. Suggestions should show their source or uncertainty and give the responsible person a way to review and correct them.",
+    "aiBody": "Use AI to triage requests, suggest maintenance actions, search documents and draft communications. Keep sources and uncertainty visible so the responsible person can review and correct each suggestion.",
     "aiControl": "Schedule changes, financial adjustments, security actions and outbound messages require the relevant human approval.",
     "shortDescription": "Facilities, resident services and collections in a workspace designed for property operators.",
     "keys": [
