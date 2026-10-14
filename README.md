@@ -38,6 +38,6 @@ The homepage product tabs support arrow keys, Home and End. Product illustration
 
 ## Prospective organisation strip
 
-The homepage displays seven Nigerian/African client prospects and five AI/cloud technology partner prospects beneath the hero. They are illustrative targets, not existing customers, partners, endorsements or verified integrations. The visible labels must remain until a relationship is independently confirmed.
+The homepage displays seven Nigerian/African client prospects and five AI/cloud technology partner prospects beneath the hero. They are illustrative targets, not existing customers, partners, endorsements or verified integrations. The visual treatment uses a neutral section heading and unlabelled logo rows; it makes no customer, endorsement or integration claims.
 
 Assets are served locally from `public/assets/prospects`; their original sources and inferred product relevance are recorded in `docs/prospect-logo-sources.json`. The two CSS logo loops share a keyboard-operable pause/resume button, pause on hover, hide duplicate lists from assistive technology and become static wrapped lists with reduced motion enabled.

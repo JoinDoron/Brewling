@@ -65,17 +65,15 @@ html{scroll-padding-top:100px}body{font-family:Inter,-apple-system,BlinkMacSyste
 
 /* Prospective organisations: two quiet, continuously looping logo rows. */
 .prospect-strip{margin-top:2px;margin-bottom:54px;padding-top:24px;border-top:1px solid var(--line)}
-.prospect-heading{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.prospect-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px}
 .prospect-heading h2{font-size:16px;line-height:1.4;letter-spacing:-.025em;color:#c8c8d1}
-.prospect-strip #prospect-note{font-size:11px;line-height:1.6;color:var(--muted);margin:6px 0 25px;max-width:620px}
 .logo-motion-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px;flex-shrink:0;min-height:36px;padding:7px 10px;border:1px solid #303138;border-radius:6px;background:transparent;color:#a9a9b6;font-size:10px;cursor:pointer}
 .logo-motion-toggle:hover{color:#f1f1f4;background:#17181e}
 .logo-motion-toggle svg{width:12px;height:12px}
 .logo-motion-toggle .motion-play,.motion-paused .motion-pause{display:none}
 .motion-paused .motion-play{display:block}
-.logo-row{display:grid;grid-template-columns:162px minmax(0,1fr);align-items:center;gap:20px}
+.logo-row{min-width:0}
 .logo-row+ .logo-row{margin-top:6px}
-.logo-row h3{font-size:10px;font-weight:450;line-height:1.6;letter-spacing:0;color:#92929f;max-width:145px}
 .logo-window{overflow:hidden;min-width:0;mask-image:linear-gradient(to right,transparent,#000 5%,#000 95%,transparent)}
 .logo-track{display:flex;width:max-content;animation:prospect-drift 48s linear infinite;will-change:transform}
 .logo-row-reverse .logo-track{animation-duration:52s;animation-direction:reverse}
@@ -99,18 +97,13 @@ html{scroll-padding-top:100px}body{font-family:Inter,-apple-system,BlinkMacSyste
  .prospect-heading h2{font-size:14px;max-width:200px}
  .logo-motion-toggle{padding:8px;min-width:44px;min-height:44px}
  .logo-motion-toggle span{display:none}
- .prospect-strip #prospect-note{font-size:10px;margin-top:9px;margin-bottom:19px;max-width:350px}
- .logo-row{grid-template-columns:1fr;gap:3px}
- .logo-row h3{max-width:none;font-size:9px}
  .logo-row+ .logo-row{margin-top:13px}
  .logo-window{mask-image:linear-gradient(to right,transparent,#000 7%,#000 93%,transparent)}
  .prospect-logo{height:60px}
 }
 @media(prefers-reduced-motion:reduce){
  .logo-motion-toggle{display:none}
- .logo-row{grid-template-columns:1fr;gap:10px}
  .logo-row+ .logo-row{margin-top:20px}
- .logo-row h3{max-width:none}
  .logo-window{overflow:visible;mask-image:none}
  .logo-track{width:100%;transform:none;will-change:auto}
  .logo-group{min-width:0;width:100%;flex-wrap:wrap;justify-content:flex-start;gap:10px 0}

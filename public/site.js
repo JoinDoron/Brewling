@@ -51,14 +51,13 @@ const prospectLogos={
   {name:'Google Cloud',file:'google-cloud.svg',style:'tech-icon',label:'Google Cloud'}
  ]
 };
-function logoRow(items,label,reverse=false){
+function logoRow(items,reverse=false){
  const group=duplicate=>`<ul class="logo-group"${duplicate?' aria-hidden="true"':' role="list"'}>${items.map(item=>`<li class="prospect-logo logo-${item.style}"><img src="assets/prospects/${item.file}" alt="${duplicate||item.label?'':esc(item.name)}" width="180" height="64" decoding="async" draggable="false">${item.label?`<span>${esc(item.label)}</span>`:''}</li>`).join('')}</ul>`;
- return `<div class="logo-row${reverse?' logo-row-reverse':''}"><h3>${label}</h3><div class="logo-window"><div class="logo-track">${group(false)}${group(true)}</div></div></div>`;
+ return `<div class="logo-row${reverse?' logo-row-reverse':''}"><div class="logo-window"><div class="logo-track">${group(false)}${group(true)}</div></div></div>`;
 }
-function prospectStrip(){return `<section class="prospect-strip wrap" aria-labelledby="prospect-heading" aria-describedby="prospect-note">
+function prospectStrip(){return `<section class="prospect-strip wrap" aria-labelledby="prospect-heading">
  <div class="prospect-heading"><h2 id="prospect-heading">African ambition. Global technology.</h2><button class="logo-motion-toggle" type="button" aria-controls="prospect-rows" aria-label="Pause motion"><svg class="motion-pause" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 3h3v10H4zm5 0h3v10H9z"/></svg><svg class="motion-play" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3l8 5-8 5z"/></svg><span>Pause motion</span></button></div>
- <p id="prospect-note">Potential clients and technology partners. An illustrative shortlist, with no current affiliation.</p>
- <div id="prospect-rows">${logoRow(prospectLogos.clients,'Client prospects · Nigeria & Africa')}${logoRow(prospectLogos.technology,'Technology partner prospects',true)}</div>
+ <div id="prospect-rows">${logoRow(prospectLogos.clients)}${logoRow(prospectLogos.technology,true)}</div>
 </section>`;}
 function bindLogoMotion(){
  const strip=document.querySelector('.prospect-strip');
