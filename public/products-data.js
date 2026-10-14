@@ -136,6 +136,7 @@ window.BREWLING_PRODUCTS = [
   },
   {
     "id": "hirebrew",
+    "websiteUrl": "https://usehirebrew.com/",
     "name": "Hirebrew",
     "category": "People operations",
     "accent": "#7ECCAE",
