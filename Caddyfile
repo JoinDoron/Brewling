@@ -1,0 +1,46 @@
+{
+	admin off
+	persist_config off
+	auto_https off
+
+	servers {
+		trusted_proxies static private_ranges
+	}
+}
+
+:{$PORT:80} {
+	header {
+		X-XSS-Protection "1; mode=block"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		-Server
+	}
+
+	respond /health 200
+	redir /proposals/heirs-group /proposals/heirs-group/ 308
+
+	# Proposal content lives in a separate private service, outside this repository.
+	# The upstream enforces authentication before returning any proposal content.
+	handle_path /proposals/heirs-group/* {
+		reverse_proxy {$HEIRS_PROPOSAL_UPSTREAM:heirs-proposal.railway.internal:8080} {
+			header_up X-Proposal-Client-IP {client_ip}
+		}
+	}
+
+	handle {
+		header Content-Security-Policy "default-src 'self'; img-src 'self' data: https: *; style-src 'self' 'unsafe-inline' https: *; script-src 'self' 'unsafe-inline' https: *; font-src 'self' data: https: *; connect-src 'self' https: *; media-src 'self' https: *; object-src 'none'; frame-src 'self' https: *;"
+		root * public
+		try_files {path} {path}.html {path}/index.html
+		file_server {
+			hide .git
+			hide .env*
+		}
+		encode zstd gzip
+	}
+
+	handle_errors {
+		rewrite * /{err.status_code}.html
+		root * public
+		file_server
+	}
+}
